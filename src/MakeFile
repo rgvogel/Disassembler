@@ -1,0 +1,27 @@
+all:		testpp1a \
+		disassembler
+
+testpp1a:	pp1.h \
+    		printFuncs.h \
+    		verifyMIPSInstruction.c \
+		binToDec.c \
+		printDebug.c \
+		printError.c \
+		testpp1a.c
+		gcc verifyMIPSInstruction.c binToDec.c printDebug.c \
+		    printError.c testpp1a.c -o testpp1a
+
+# The assembler will probably have other source files in addition to these.
+disassembler:	disassembler.h \
+    		printFuncs.h \
+    		verifyMIPSInstruction.c \
+		binToDec.c \
+		getRegName.c \
+		printDebug.c \
+		printError.c \
+		disassembler.c
+		gcc verifyMIPSInstruction.c binToDec.c getRegName.c \
+		    printDebug.c printError.c disassembler.c -o disassembler
+
+clean: 
+	rm -rf *.o testpp1a disassembler
